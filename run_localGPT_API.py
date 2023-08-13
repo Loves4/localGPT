@@ -36,13 +36,13 @@ EMBEDDINGS = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, mode
 
 # uncomment the following line if you used HuggingFaceEmbeddings in the ingest.py
 # EMBEDDINGS = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
-if os.path.exists(PERSIST_DIRECTORY):
-    try:
-        shutil.rmtree(PERSIST_DIRECTORY)
-    except OSError as e:
-        print(f"Error: {e.filename} - {e.strerror}.")
-else:
-    print("The directory does not exist")
+# if os.path.exists(PERSIST_DIRECTORY):
+#     try:
+#         shutil.rmtree(PERSIST_DIRECTORY)
+#     except OSError as e:
+#         print(f"Error: {e.filename} - {e.strerror}.")
+# else:
+#     print("The directory does not exist")
 
 run_langest_commands = ["python", "ingest.py"]
 if DEVICE_TYPE == "cpu":
@@ -77,12 +77,12 @@ app = Flask(__name__)
 def delete_source_route():
     folder_name = "SOURCE_DOCUMENTS"
 
-    if os.path.exists(folder_name):
-        shutil.rmtree(folder_name)
+    # if os.path.exists(folder_name):
+    #     shutil.rmtree(folder_name)
 
-    os.makedirs(folder_name)
+    # os.makedirs(folder_name)
 
-    return jsonify({"message": f"Folder '{folder_name}' successfully deleted and recreated."})
+    # return jsonify({"message": f"Folder '{folder_name}' successfully deleted and recreated."})
 
 
 @app.route("/api/save_document", methods=["GET", "POST"])
